@@ -15,18 +15,3 @@
     "node": ">=18"
   }
 }
-```
-
----
-
-**File 3 — `Procfile`** (no extension, just `Procfile`)
-```
-web: node index.js
-```
-
----
-
-**File 4 — `.env.example`**
-```
-GEM_API_KEY=gem_live_xxxxxxxxxxxxxxxxxxxx
-PORT=3001

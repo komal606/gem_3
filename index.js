@@ -29,8 +29,6 @@ app.all("/gem/*", async (req, res) => {
   const queryString = new URLSearchParams(req.query).toString();
   const url = `https://api.gem.com${gemPath}${queryString ? "?" + queryString : ""}`;
 
-  console.log(`→ ${req.method} ${url}`);
-
   try {
     const response = await fetch(url, {
       method: req.method,
@@ -43,14 +41,8 @@ app.all("/gem/*", async (req, res) => {
     });
 
     const data = await response.json();
-
-    if (!response.ok) {
-      console.error(`Gem API error ${response.status}:`, data);
-    }
-
     res.status(response.status).json(data);
   } catch (err) {
-    console.error("Proxy error:", err.message);
     res.status(500).json({ error: "Proxy request failed", message: err.message });
   }
 });
